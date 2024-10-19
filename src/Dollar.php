@@ -6,15 +6,20 @@ namespace Whycash;
 
 final class Dollar
 {
-    public int $amount;
+    public float $amount;
 
-    public function __construct(int $amount)
+    public function __construct(float $amount)
     {
         $this->amount = $amount;
     }
 
-    public function multiply(int $factor): void
+    public function sum(float $amount): self
     {
-        $this->amount *= $factor;
+        return new self($this->amount + $amount);
+    }
+
+    public function times(float $factor): self
+    {
+        return new self($this->amount * $factor);
     }
 }
